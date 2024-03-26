@@ -3,7 +3,7 @@ import axios from "axios";
 export async function criarConta(dados){
     console.log(dados)
     try {
-        await axios.post("http://localhost:4000/perfil", {
+        await axios.post("https://backquizz.onrender.com/perfil", {
           perfil:{
               email: dados.email,
               senha: dados.password

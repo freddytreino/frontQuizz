@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const AxiosClient = axios.create({
-    baseURL: 'localhost:4000'
+    baseURL: 'https://backquizz.onrender.com'
 })
 
 

@@ -41,7 +41,7 @@ export function Login() {
 
   const makeLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:4000/login", {
+      const res = await axios.post("https://backquizz.onrender.com/login", {
         email,
         senha: password,
       });
