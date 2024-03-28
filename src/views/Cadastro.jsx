@@ -8,14 +8,23 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { criarConta } from "../services/CadastroService";
-
+import { useNavigate } from "react-router-dom";
+import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg'
+import Image from 'react-bootstrap/Image';
 export function Cadastro() {
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    borderRadius:"5px"
+
+  };
     const [showPassword, setShowPassword] = useState(false)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
-    
+    const navigate = useNavigate(); // Hook useNavigate para redirecionamento
     const createAccount = async () => {
       if(password !== passwordConfirm) {
           alert('Senhas devem ser iguais')
@@ -31,7 +40,7 @@ export function Cadastro() {
       const result = await criarConta(payload)
       if(!result.error) {
           // eslint-disable-next-line no-restricted-globals
-         location.href = 'http://localhost:3000/login'
+         navigate('/login')
      }
   
       alert(result.message)
@@ -44,20 +53,27 @@ export function Cadastro() {
         <Row className="justify-content-md-center">
           <Col xs={12} md={4}>
             <Card className="mt-5">
-              <Card.Body>
+              <Card.Body style={{ ...containerStyle, maxWidth: '100%', borderradius:'5px' }}>
                 <Card.Title>
-                  <Row className="justify-content-md-center">
-                    <Col xs={12} style={{ textAlign: "center" }} className="my-3">
+                  <Row className="justify-content-md-center" style={{textAlign:"center"}}>
+                  <Col xs={12} style={{ textAlign: "center" }} className="my-3">
+                    <Image
+                      width={100}
+                      height={100}
+                      alt="171x180"
+                      src="https://cdn.pixabay.com/photo/2020/07/11/12/31/idea-5393862_640.png"
+                    />
+                  </Col>
+                    <Col style={{ textAlign: "center",color:"white",margin:"auto"}} xs={10}>
+                      <h1 style={{margin:"auto 0"}}>BrainUp</h1>
                     </Col>
-                    <Col style={{ textAlign: "center" }} xs={10}>
-                      Cadastro NerdQuiz
-                    </Col>
+                    
                   </Row>
                 </Card.Title>
   
                 <Form>
                 <Form.Group className="mb-3" controlId="formBasicName">
-                    <Form.Label>Nome</Form.Label>
+                    <Form.Label style={{ textAlign: "center",color:"white",fontWeight:"bolder"}}>Nome</Form.Label>
                     <Form.Control
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -66,7 +82,7 @@ export function Cadastro() {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label style={{ textAlign: "center",color:"white",fontWeight:"bolder"}}>Email</Form.Label>
                     <Form.Control
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +90,7 @@ export function Cadastro() {
                       placeholder="Seu Email"
                     />
                   </Form.Group>
-                  <Form.Label> Sua Senha</Form.Label>
+                  <Form.Label style={{ textAlign: "center",color:"white",fontWeight:"bolder"}}> Sua Senha</Form.Label>
   
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                   <InputGroup className="mb-3">
@@ -88,7 +104,7 @@ export function Cadastro() {
                   </InputGroup>
                   </Form.Group>
   
-                  <Form.Label>Confirme Sua Senha</Form.Label>
+                  <Form.Label style={{ textAlign: "center",color:"white",fontWeight:"bolder"}}>Confirme Sua Senha</Form.Label>
                   <Form.Group  controlId="formBasicPassword">
                   <InputGroup className="mb-3">
                   <InputGroup.Text onClick={() => setShowPassword(state => !state) }>{showPassword ? '°_°' : '-_-'}</InputGroup.Text>

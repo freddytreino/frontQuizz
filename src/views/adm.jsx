@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
@@ -6,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg'
 
-export function Home() {
+export function Adm() {
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
@@ -51,10 +52,13 @@ export function Home() {
                 </Row>
               </Card.Title>
               <Col style={{textAlign:'center', margin:"5px"}}>
-                <Button variant="success" as={Link} to="/escolha" style={buttonStyle}>JOGAR</Button>
+                <Button variant="primary" as={Link} to="/escolha" style={buttonStyle}>JOGAR</Button>
               </Col>
               <Col style={{textAlign:'center', margin:"5px"}}>
-                <Button variant="light" as={Link} to="/informacoes" style={buttonStyle}>INFORMAÇÕES</Button>
+                <Button variant="primary" as={Link} to="/quest" style={buttonStyle}>CRIAR QUESTÕES</Button>
+              </Col>
+              <Col style={{textAlign:'center', margin:"5px"}}>
+                <Button variant="success" as={Link} to="/informacoes" style={buttonStyle}>INFORMAÇÕES</Button>
               </Col>
               <Col style={{textAlign:'center', margin:"5px"}}>
                 <Button variant="danger" onClick={handleLogout} style={buttonStyle}>SAIR</Button>

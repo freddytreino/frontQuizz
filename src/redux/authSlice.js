@@ -16,7 +16,7 @@ export const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       const { payload } = action;
-      console.log("Dados recebidos do servidor:", payload); // Debugging
+     
       if (payload && payload.email) {
         state.user = {
           ...payload, // Copiar todos os campos do payload
@@ -25,7 +25,7 @@ export const authSlice = createSlice({
         };
         localStorage.setItem('loggedUser', JSON.stringify(state.user));
         state.isAuthenticated = true;
-        console.log("Dados de usuário após o login:", state.user); // Debugging
+        
       }
     },
     logout: (state) => {

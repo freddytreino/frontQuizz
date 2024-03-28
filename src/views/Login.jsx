@@ -11,8 +11,17 @@ import { showSnackbar } from "../redux/snackbarSlice";
 import { login } from "../redux/authSlice";
 import axios from "axios";
 import { useDispatch } from 'react-redux';
+import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg'
+
 
 export function Login() {
+  const containerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    borderRadius:"5px"
+
+  };
   const dispatch = useDispatch()
   const navigate = useNavigate(); // Hook useNavigate para redirecionamento
   const [email, setEmail] = useState("");
@@ -22,22 +31,14 @@ export function Login() {
     dispatch(
       showSnackbar({
         variant: "danger",
-        title: 'Um erro ocorreu =(',
+        title: 'Um erro ocorreu',
         message
       })
     )
     
   };
 
-  const showSuccessAlert = (message) => {
-    dispatch(
-      showSnackbar({
-        variant: "success",
-        title: 'Bem Vindo!',
-        message
-      })
-    )
-  };
+
 
   const makeLogin = async () => {
     try {
@@ -46,11 +47,16 @@ export function Login() {
         senha: password,
       });
       //console.log(res.data)
-      showSuccessAlert(`Você está logado!! Bem Vindo ${res.data.nome} :)`);
+     
       
       dispatch(login(res.data))
       console.log(login(res.data))
-      navigate("/home");
+      if(res.data.usuario){
+        navigate("/home");
+
+      }else{
+        navigate("/adm")
+      }
     } catch (error) {
       console.log(error.response.data);
       showAlertError(error.response.data.mensagem);
@@ -62,7 +68,7 @@ export function Login() {
       <Row className="justify-content-md-center">
         <Col xs={12} md={4}>
           <Card className="mt-5">
-            <Card.Body>
+            <Card.Body style={{ ...containerStyle, maxWidth: '100%', borderradius:'5px' }}>
               <Card.Title>
                 <Row className="justify-content-md-center">
                   <Col xs={12} style={{ textAlign: "center" }} className="my-3">
@@ -70,18 +76,18 @@ export function Login() {
                       width={100}
                       height={100}
                       alt="171x180"
-                      src="https://www.nicepng.com/png/detail/543-5431552_oktobercat-github-octocat.png"
+                      src="https://cdn.pixabay.com/photo/2020/07/11/12/31/idea-5393862_640.png"
                     />
                   </Col>
-                  <Col style={{ textAlign: "center" }} xs={10}>
-                    NerdQuiz
+                  <Col style={{ textAlign: "center" , color:"white"}} xs={10}>
+                    <h1>BrainUp</h1>
                   </Col>
                 </Row>
               </Card.Title>
 
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label style={{color:"white",fontWeight:"bolder"}}>Email</Form.Label>
                   <Form.Control
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -90,11 +96,9 @@ export function Login() {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label className="mt-2">Senha</Form.Label>
+                  <Form.Label className="mt-2" style={{color:"white",fontWeight:"bolder"}}>Senha</Form.Label>
 
-                  <Button style={{ float: "right" }} variant="link">
-                    
-                  </Button>
+                  
 
                   <Form.Control
                     onChange={(e) => setPassword(e.target.value)}
@@ -109,12 +113,12 @@ export function Login() {
                     type="button"
                     onClick={() => makeLogin()}
                   >
-                    Entrar
+                    ENTRAR
                   </Button>
 
-                  <Button variant="link">
-                    <Link to="/cadastro">Criar Conta</Link>
-                  </Button>
+                  
+                <Button variant="primary" as={Link} to="/cadastro" >CRIAR CONTA</Button>
+              
                 </div>
               </Form>
             </Card.Body>
