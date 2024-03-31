@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'; // Importe useDispatch
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { showSnackbar } from "../redux/snackbarSlice";
 import { Link } from 'react-router-dom';
 
-// Imagem de fundo
 import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg';
 
 export function QuestionForm() {
@@ -16,16 +15,13 @@ export function QuestionForm() {
     backgroundPosition: 'center',
     borderRadius: "5px"
   };
-  const buttonStyle = {
-    width: '100%',
-    margin: '5px',
-  };
+
   const user = useSelector(state => state.auth.user);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated); // Verifica se o usuário está autenticado
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [numero, setNumero] = useState(''); // Adicione o estado para o número da questão
+  const [numero, setNumero] = useState('');
   const [question, setQuestion] = useState('');
   const [level, setLevel] = useState('');
   const [subject, setSubject] = useState('');
@@ -33,7 +29,7 @@ export function QuestionForm() {
   const [alt2, setAlt2] = useState('');
   const [alt3, setAlt3] = useState('');
   const [alt4, setAlt4] = useState('');
-  const [correctAnswer, setCorrectAnswer] = useState(1); // Definir a primeira alternativa como correta por padrão
+  const [correctAnswer, setCorrectAnswer] = useState(1);
 
   const showAlertError = (message) => {
     dispatch(
@@ -45,6 +41,28 @@ export function QuestionForm() {
     )
   };
 
+  useEffect(() => {
+    if (subject) {
+      fetchLastQuestionNumber();
+     
+    }
+  }, [subject]);
+
+  const fetchLastQuestionNumber = async () => {
+    try {
+      if(subject=="matemática"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoMath`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
+      }
+     
+    } catch (error) {
+      console.error('Erro ao buscar número da última questão:', error);
+    }
+  };
+
   const handleCreateQuestion = async () => {
     if (!isAuthenticated) {
       navigate("/login");
@@ -52,7 +70,12 @@ export function QuestionForm() {
     }
 
     try {
-      const response = await axios.post("https://backquizz.onrender.com/quest", {
+      let url = "https://backquizz.onrender.com/quest";
+      if (subject.toLowerCase() === 'matemática') {
+        url += '/matematica';
+      }
+
+      const response = await axios.post(url, {
         numero,
         question,
         level,
@@ -64,9 +87,8 @@ export function QuestionForm() {
           { text: alt4, isCorrect: correctAnswer === 4 }
         ]
       });
-      console.log(response.data);
-      // Limpar o formulário após o envio bem-sucedido
-      setNumero(""); // Limpar também o campo de número
+
+      setNumero("");
       setQuestion("");
       setLevel("");
       setSubject("");
@@ -74,10 +96,9 @@ export function QuestionForm() {
       setAlt2("");
       setAlt3("");
       setAlt4("");
-      setCorrectAnswer(1); // Resetar para a primeira alternativa
+      setCorrectAnswer(1);
       alert("Questão criada com sucesso!");
     } catch (error) {
-      //console.error('Erro ao criar questão:', error);
       if (error.response && error.response.data) {
         console.log(error.response.data);
       } else {
@@ -102,11 +123,31 @@ export function QuestionForm() {
               </Card.Title>
 
               <Form>
+                <Form.Group className="mb-3" controlId="formBasicSubject">
+                  <Form.Label>Disciplina</Form.Label>
+                  <Form.Select
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                  >
+                    <option value="">Selecione a disciplina</option>
+                    <option value="matemática">Matemática</option>
+                    <option value="portugues">Português</option>
+                    <option value="biologia">Biologia</option>
+                    <option value="química">Química</option>
+                    <option value="física">Física</option>
+                    <option value="história">História</option>
+                    <option value="geografia">Geografia</option>
+                    <option value="literatura">Literatura</option>
+                    <option value="filosofia">Filosofia</option>
+                    <option value="artes">Artes</option>
+                  </Form.Select>
+                </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formBasicNumero">
                   <Form.Label>Número da Questão</Form.Label>
                   <Form.Control
                     value={numero}
-                    onChange={(e) => setNumero(e.target.value)}
+                    readOnly={true}
                     type="number"
                     placeholder="Digite o número da questão"
                   />
@@ -132,21 +173,7 @@ export function QuestionForm() {
                     <option value="difícil">Difícil</option>
                   </Form.Select>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicSubject">
-                  <Form.Label>Disciplina</Form.Label>
-                  <Form.Select
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                  >
-                    <option value="">Selecione a disciplina</option>
-                    <option value="história">História</option>
-                    <option value="química">Química</option>
-                    <option value="biologia">Biologia</option>
-                    <option value="geografia">Geografia</option>
-                    <option value="artes">Artes</option>
-                    <option value="matemática">Matemática</option>
-                  </Form.Select>
-                </Form.Group>
+                
                 <Form.Group className="mb-3" controlId="formBasicAlt1">
                   <Form.Label>Alternativa 1</Form.Label>
                   <Form.Control
@@ -219,14 +246,11 @@ export function QuestionForm() {
                   >
                     ENVIAR
                   </Button>
-                   
-               
-                             
-                             {user.usuario ?
-                                 <Button variant="success" as={Link} to="/home" >VOLTAR</Button> :
-                                 <Button variant="success" as={Link} to="/adm" >VOLTAR</Button>
-                             }
-                        
+
+                  {user.usuario ?
+                    <Button variant="success" as={Link} to="/home">VOLTAR</Button> :
+                    <Button variant="success" as={Link} to="/adm">VOLTAR</Button>
+                  }
                 </div>
               </Form>
             </Card.Body>

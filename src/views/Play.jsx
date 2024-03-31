@@ -58,8 +58,8 @@ export function Escolher() {
                             </Row>
                             <Row>
                                 <Col style={{ textAlign: 'center', margin: "5px", display: "flex" }}>
-                                    <Button variant="light" as={Link} to="/esportes" style={buttonStyle}>Esportes</Button>
-                                    <Button variant="light" as={Link} to="/games" style={buttonStyle}>Games</Button>
+                                    <Button variant="light" as={Link} to="/literatura" style={buttonStyle}>Literatura</Button>
+                                    <Button variant="light" as={Link} to="/portugues" style={buttonStyle}>Português</Button>
                                 </Col>
                             </Row>
                             <Row>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Card, Button, Form } from 'react-bootstrap';
 import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg';
 
-export function Math() {
+export function Quim() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -15,7 +15,7 @@ export function Math() {
     async function fetchQuestions() {
       try {
         const response = await axios.get("https://backquizz.onrender.com/quest");
-        const mathQuestions = response.data.filter(question => question.subject === 'matemática');
+        const mathQuestions = response.data.filter(question => question.subject === 'química');
         setQuestions(mathQuestions);
       } catch (error) {
         console.error('Erro ao carregar as questões:', error);
