@@ -56,6 +56,48 @@ export function QuestionForm() {
         if (response.data && response.data.numero) {
           setNumero(response.data.numero + 1);
         }
+      }else if(subject=="linguagens"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoLinguagens`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
+      }else if(subject=="biologia"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoBiologia`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
+      }else if(subject=="filosofia"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoFilosofia`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
+      }else if(subject=="física"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoFisica`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
+      }else if(subject=="geografia"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoGeografia`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
+      }else if(subject=="história"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoHistoria`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
+      }else if(subject=="química"){
+        const response = await axios.get(`https://backquizz.onrender.com/quest/ultimoQuimica`);
+        console.log(response.data)
+        if (response.data && response.data.numero) {
+          setNumero(response.data.numero + 1);
+        }
       }
      
     } catch (error) {
@@ -73,6 +115,20 @@ export function QuestionForm() {
       let url = "https://backquizz.onrender.com/quest";
       if (subject.toLowerCase() === 'matemática') {
         url += '/matematica';
+      }else if(subject.toLowerCase()==='linguagens'){
+        url += '/linguagens';
+      }else if(subject.toLowerCase()==='biologia'){
+        url += '/biologia';
+      }else if(subject.toLowerCase()==='filosofia'){
+        url += '/filosofia';
+      }else if(subject.toLowerCase()==='física'){
+        url += '/fisica';
+      }else if(subject.toLowerCase()==='geografia'){
+        url += '/geografia';
+      }else if(subject.toLowerCase()==='história'){
+        url += '/historia';
+      }else if(subject.toLowerCase()==='química'){
+        url += '/quimica';
       }
 
       const response = await axios.post(url, {
@@ -116,34 +172,32 @@ export function QuestionForm() {
             <Card.Body style={{ ...containerStyle, maxWidth: '100%', borderRadius: '5px' }}>
               <Card.Title>
                 <Row className="justify-content-md-center">
-                  <Col xs={12} style={{ textAlign: "center" }} className="my-3">
+                  <Col xs={12} style={{ textAlign: "center", color:"white", fontWeight:"bolder" }} className="my-3">
                     <h1>Criar Questão</h1>
                   </Col>
                 </Row>
               </Card.Title>
 
               <Form>
-                <Form.Group className="mb-3" controlId="formBasicSubject">
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicSubject">
                   <Form.Label>Disciplina</Form.Label>
                   <Form.Select
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                   >
                     <option value="">Selecione a disciplina</option>
-                    <option value="matemática">Matemática</option>
-                    <option value="portugues">Português</option>
+                    <option value="linguagens">Linguagens</option>
                     <option value="biologia">Biologia</option>
-                    <option value="química">Química</option>
-                    <option value="física">Física</option>
-                    <option value="história">História</option>
-                    <option value="geografia">Geografia</option>
-                    <option value="literatura">Literatura</option>
                     <option value="filosofia">Filosofia</option>
-                    <option value="artes">Artes</option>
+                    <option value="física">Física</option>
+                    <option value="geografia">Geografia</option>
+                    <option value="história">História</option>
+                    <option value="matemática">Matemática</option>
+                    <option value="química">Química</option>
                   </Form.Select>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicNumero">
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicNumero">
                   <Form.Label>Número da Questão</Form.Label>
                   <Form.Control
                     value={numero}
@@ -152,16 +206,7 @@ export function QuestionForm() {
                     placeholder="Digite o número da questão"
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicQuestion">
-                  <Form.Label>Pergunta</Form.Label>
-                  <Form.Control
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                    type="text"
-                    placeholder="Digite sua pergunta"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicLevel">
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicLevel">
                   <Form.Label>Nível</Form.Label>
                   <Form.Select
                     value={level}
@@ -173,8 +218,17 @@ export function QuestionForm() {
                     <option value="difícil">Difícil</option>
                   </Form.Select>
                 </Form.Group>
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicQuestion">
+                  <Form.Label>Pergunta</Form.Label>
+                  <Form.Control
+                    value={question}
+                    onChange={(e) => setQuestion(e.target.value)}
+                    type="text"
+                    placeholder="Digite sua pergunta"
+                  />
+                </Form.Group>
                 
-                <Form.Group className="mb-3" controlId="formBasicAlt1">
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicAlt1">
                   <Form.Label>Alternativa 1</Form.Label>
                   <Form.Control
                     value={alt1}
@@ -190,7 +244,7 @@ export function QuestionForm() {
                     onChange={() => setCorrectAnswer(1)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicAlt2">
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicAlt2">
                   <Form.Label>Alternativa 2</Form.Label>
                   <Form.Control
                     value={alt2}
@@ -206,7 +260,7 @@ export function QuestionForm() {
                     onChange={() => setCorrectAnswer(2)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicAlt3">
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicAlt3">
                   <Form.Label>Alternativa 3</Form.Label>
                   <Form.Control
                     value={alt3}
@@ -222,7 +276,7 @@ export function QuestionForm() {
                     onChange={() => setCorrectAnswer(3)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicAlt4">
+                <Form.Group className="mb-3" style={{color:"white", fontWeight:"bolder"}} controlId="formBasicAlt4">
                   <Form.Label>Alternativa 4</Form.Label>
                   <Form.Control
                     value={alt4}

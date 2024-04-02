@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Card, Button, Form } from 'react-bootstrap';
 import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg';
 
-export function Artes() {
+export function Linguagens() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -14,9 +14,9 @@ export function Artes() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const response = await axios.get("https://backquizz.onrender.com/quest");
-        const mathQuestions = response.data.filter(question => question.subject === 'artes');
-        setQuestions(mathQuestions);
+        const response = await axios.get("https://backquizz.onrender.com/quest/linguagens");
+        const Questions = response.data
+        setQuestions(Questions);
       } catch (error) {
         console.error('Erro ao carregar as questões:', error);
       }
@@ -24,7 +24,6 @@ export function Artes() {
     fetchQuestions();
   }, []);
 
-  // Limpa a mensagem de erro quando a resposta selecionada muda
   useEffect(() => {
     setErrorMessage('');
   }, [selectedAnswer]);

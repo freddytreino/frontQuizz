@@ -9,13 +9,14 @@ export function Math() {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
   const [showNextButton, setShowNextButton] = useState(false);
+  const [showFinishButton, setShowFinishButton] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     async function fetchQuestions() {
       try {
         const response = await axios.get("https://backquizz.onrender.com/quest");
-        const mathQuestions = response.data.filter(question => question.subject === 'matemática');
+        const mathQuestions = response.data.filter(question => question.subject === 'matemática').slice(0, 5);
         setQuestions(mathQuestions);
       } catch (error) {
         console.error('Erro ao carregar as questões:', error);
@@ -24,7 +25,6 @@ export function Math() {
     fetchQuestions();
   }, []);
 
-  // Limpa a mensagem de erro quando a resposta selecionada muda
   useEffect(() => {
     setErrorMessage('');
   }, [selectedAnswer]);
@@ -45,6 +45,9 @@ export function Math() {
     }
 
     setShowNextButton(true);
+    if (currentQuestionIndex === 4) {
+      setShowFinishButton(true);
+    }
   };
 
   const handleNextQuestion = () => {
@@ -53,6 +56,11 @@ export function Math() {
     setShowNextButton(false);
     setErrorMessage('');
     setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+  };
+
+  const handleFinishQuiz = () => {
+    
+    console.log('Quiz finalizado!');
   };
 
   if (questions.length === 0) {
@@ -86,9 +94,9 @@ export function Math() {
             </div>
           )}
           <div style={{ textAlign: 'center', margin: "5px" }}>
-            {showNextButton ? (
-              <Button variant="primary" style={{textAlign:"center",margin:"5px"}} onClick={handleNextQuestion}>
-                Próxima Questão
+            {showNextButton || showFinishButton ? (
+              <Button variant="danger" style={{textAlign:"center",margin:"5px"}} onClick={showFinishButton ? handleFinishQuiz : handleNextQuestion}>
+                {showFinishButton ? 'Finalizar' : 'Próxima Questão'}
               </Button>
             ) : (
               <Button variant="primary" style={{textAlign:"center",margin:"5px"}} onClick={handleAnswerSubmit}>

@@ -10,13 +10,12 @@ import { QuestionForm } from '../views/criarQuest'
 import { Math } from '../views/matematica'
 import { Quim } from '../views/quimica'
 import { Hist } from '../views/historia'
-import { Artes } from '../views/artes'
 import { Bio } from '../views/biologia'
 import { Filo } from '../views/filosofia'
 import { Fisica } from '../views/fisica'
+import { Linguagens } from '../views/linguagens'
 
 export const ADM_ROUTE = "/adm"
-export const ARTES_ROUTE="/artes"
 export const BIOLOGIA_ROUTE="/biologia"
 export const CADASTRO_ROUTE='/cadastro'
 export const QUEST_ROUTE ="/quest"
@@ -30,7 +29,7 @@ export const MATEMATICA_ROUTE="/matematica"
 export const QUIMICA_ROUTE ="/quimica"
 export const HISTORIA_ROUTE='/historia'
 export const FISICA_ROUTE="/fisica"
-
+export const LINGUAGENS_ROUTE="/linguagens"
 export function AppRoutes(){
     return(
         <Routes>
@@ -72,7 +71,7 @@ export function AppRoutes(){
                     <Route path={HISTORIA_ROUTE} element={<Hist></Hist>}/>
                 </Route>
                 <Route>
-                    <Route path={ARTES_ROUTE} element={<Artes></Artes>}/>
+                    <Route path={LINGUAGENS_ROUTE} element={<Linguagens></Linguagens>}/>
                 </Route>
                 <Route>
                     <Route path={BIOLOGIA_ROUTE} element={<Bio></Bio>}/>

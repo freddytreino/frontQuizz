@@ -15,8 +15,8 @@ export function Filo() {
     async function fetchQuestions() {
       try {
         const response = await axios.get("https://backquizz.onrender.com/quest");
-        const mathQuestions = response.data.filter(question => question.subject === 'filosofia');
-        setQuestions(mathQuestions);
+        const Questions = response.data
+        setQuestions(Questions);
       } catch (error) {
         console.error('Erro ao carregar as questões:', error);
       }
@@ -24,7 +24,6 @@ export function Filo() {
     fetchQuestions();
   }, []);
 
-  // Limpa a mensagem de erro quando a resposta selecionada muda
   useEffect(() => {
     setErrorMessage('');
   }, [selectedAnswer]);

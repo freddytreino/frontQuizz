@@ -16,7 +16,7 @@ export function Adm() {
 
   };
   const user = useSelector(state => state.auth.user);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated); // Verifica se o usuário está autenticado
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,17 +25,17 @@ export function Adm() {
     navigate("/login");
   };
 
-  // Estilo comum para todos os botões
+  
   const buttonStyle = {
-    width: '80%', // Largura de 100%
-    margin: '5px', // Margem de 5px
+    width: '80%', 
+    margin: '5px', 
   };
 
-  // Verifica se o usuário está autenticado
+  
   if (!isAuthenticated) {
-    // Se não estiver autenticado, redireciona para a página de login
+    
     navigate("/login");
-    return null; // Retorna null para não renderizar o conteúdo da página Home
+    return null; 
   }
 
   return (
@@ -58,7 +58,7 @@ export function Adm() {
                 <Button variant="primary" as={Link} to="/quest" style={buttonStyle}>CRIAR QUESTÕES</Button>
               </Col>
               <Col style={{textAlign:'center', margin:"5px"}}>
-                <Button variant="success" as={Link} to="/informacoes" style={buttonStyle}>INFORMAÇÕES</Button>
+                <Button variant="light" as={Link} to="/informacoes" style={buttonStyle}>INFORMAÇÕES</Button>
               </Col>
               <Col style={{textAlign:'center', margin:"5px"}}>
                 <Button variant="danger" onClick={handleLogout} style={buttonStyle}>SAIR</Button>

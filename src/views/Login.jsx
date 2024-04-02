@@ -46,11 +46,11 @@ export function Login() {
         email,
         senha: password,
       });
-      //console.log(res.data)
+  
      
       
       dispatch(login(res.data))
-      console.log(login(res.data))
+      
       if(res.data.usuario){
         navigate("/home");
 
