@@ -125,7 +125,7 @@ export function Cadastro() {
                       Criar Conta
                     </Button>
                     <Button style={{ float: "right" }} variant="link">
-                      <Link to='/login'>Já tem conta? Faça Login</Link>
+                      <Link to='/login' style={{color:"white"}}>Já tem conta? Faça Login</Link>
                     </Button>
                   </div>
                 </Form>
