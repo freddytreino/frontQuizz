@@ -19,8 +19,8 @@ export const authSlice = createSlice({
      
       if (payload && payload.email) {
         state.user = {
-          ...payload, // Copiar todos os campos do payload
-          pontuacao: payload.pontuacao !== undefined ? payload.pontuacao : state.user.pontuacao, // Preservar a pontuação atual se não estiver definida no payload
+          ...payload,
+          pontuacao: payload.pontuacao !== undefined ? payload.pontuacao : state.user.pontuacao,
           respondido: payload.respondido !== undefined ? payload.respondido : state.user.respondido,
         };
         localStorage.setItem('loggedUser', JSON.stringify(state.user));

@@ -14,6 +14,7 @@ import { Bio } from '../views/biologia'
 import { Filo } from '../views/filosofia'
 import { Fisica } from '../views/fisica'
 import { Linguagens } from '../views/linguagens'
+import { Pontuacao } from '../views/pontuacao'
 
 export const ADM_ROUTE = "/adm"
 export const BIOLOGIA_ROUTE="/biologia"
@@ -30,6 +31,7 @@ export const QUIMICA_ROUTE ="/quimica"
 export const HISTORIA_ROUTE='/historia'
 export const FISICA_ROUTE="/fisica"
 export const LINGUAGENS_ROUTE="/linguagens"
+export const PONTUCAO_ROUTE ="/pontuacao"
 export function AppRoutes(){
     return(
         <Routes>
@@ -81,6 +83,9 @@ export function AppRoutes(){
                 </Route>
                 <Route>
                     <Route path={FISICA_ROUTE} element={<Fisica></Fisica>}/>
+                </Route>
+                <Route>
+                    <Route path={PONTUCAO_ROUTE} element={<Pontuacao></Pontuacao>}/>
                 </Route>
         </Routes>
     )

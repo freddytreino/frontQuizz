@@ -23,7 +23,7 @@ export function Login() {
 
   };
   const dispatch = useDispatch()
-  const navigate = useNavigate(); // Hook useNavigate para redirecionamento
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -48,7 +48,7 @@ export function Login() {
       });
   
      
-      
+     
       dispatch(login(res.data))
       
       if(res.data.usuario){
@@ -58,7 +58,7 @@ export function Login() {
         navigate("/adm")
       }
     } catch (error) {
-      console.log(error.response.data);
+
       showAlertError(error.response.data.mensagem);
     }
   };

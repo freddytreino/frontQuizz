@@ -40,26 +40,26 @@ export function Escolher() {
                             </Card.Title>
                             <Row>
                                 <Col style={{ textAlign: 'center', margin: "5px", display: "flex" }}>
-                                    <Button variant="light" as={Link} to="/linguagens" style={buttonStyle}>Linguagens</Button>
                                     <Button variant="light" as={Link} to="/biologia" style={buttonStyle}>Biologia</Button>
+                                    <Button variant="light" as={Link} to="/filosofia" style={buttonStyle}>Filosofia</Button>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col style={{ textAlign: 'center', margin: "5px", display: "flex" }}>
-                                    <Button variant="light" as={Link} to="/filosofia" style={buttonStyle}>Filosofia</Button>
                                     <Button variant="light" as={Link} to="/fisica" style={buttonStyle}>Física</Button>
+                                    <Button variant="light" as={Link} to="/historia" style={buttonStyle}>História</Button>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col style={{ textAlign: 'center', margin: "5px", display: "flex" }}>
+                                    <Button variant="light" as={Link} to="/geografia" style={buttonStyle}>Geografia</Button>
+                                    <Button variant="light" as={Link} to="/linguagens" style={buttonStyle}>Linguagens</Button>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col style={{ textAlign: 'center', margin: "5px", display: "flex" }}>
                                     <Button variant="light" as={Link} to="/matematica" style={buttonStyle}>Matemática</Button>
-                                    <Button variant="light" as={Link} to="/geografia" style={buttonStyle}>Geografia</Button>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col style={{ textAlign: 'center', margin: "5px", display: "flex" }}>
                                     <Button variant="light" as={Link} to="/quimica" style={buttonStyle}>Química</Button>
-                                    <Button variant="light" as={Link} to="/historia" style={buttonStyle}>História</Button>
                                 </Col>
                             </Row>
                             <Row>
