@@ -20,9 +20,8 @@ export function Math() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const response = await axios.get("https://backquizz.onrender.com/quest");
-        const mathQuestions = response.data.filter(question => question.subject === 'matemática');
-        setQuestions(mathQuestions);
+        const response = await axios.get("https://backquizz.onrender.com/quest/matematica");
+        setQuestions(response.data);
       } catch (error) {
         console.error('Erro ao carregar as questões:', error);
       }
@@ -96,10 +95,10 @@ export function Math() {
     <Container className="mt-5">
       <Card>
         <Card.Body style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "5px" }}>
-          <Card.Title style={{ color: "white", textAlign: 'center' }}>{currentQuestion.question}</Card.Title>
+          <Card.Title style={{ color: "white", textAlign: 'justify' }}>{currentQuestion.question}</Card.Title>
           <Form.Group style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {currentQuestion.alternatives.map((alt, index) => (
-              <div key={index} style={{ marginBottom: '5px', width: '100%', maxWidth: '300px' }}>
+              <div key={index} style={{ marginBottom: '5px', width: '60%' }}>
                 <Button
                   variant={(selectedAnswer === alt.text) ? 'warning' : 'light'}
                   style={{ width: '100%', whiteSpace: 'normal', color: ((isAnswerCorrect !== null && selectedAnswer === alt.text) ? (isAnswerCorrect ? 'green' : 'red') : 'black') }}

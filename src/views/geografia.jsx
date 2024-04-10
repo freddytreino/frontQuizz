@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Card, Button, Form } from 'react-bootstrap';
 import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg';
 
-export function Quim() {
+export function Geo() {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -20,7 +20,7 @@ export function Quim() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const response = await axios.get("https://backquizz.onrender.com/quest/quimica");
+        const response = await axios.get("https://backquizz.onrender.com/quest/geografia");
         setQuestions(response.data);
       } catch (error) {
         console.error('Erro ao carregar as questões:', error);
@@ -95,7 +95,7 @@ export function Quim() {
     <Container className="mt-5">
       <Card>
         <Card.Body style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: "5px" }}>
-          <Card.Title style={{ color: "white", textAlign: 'justify' }}>{currentQuestion.question}</Card.Title>
+          <Card.Title style={{ color: "white",textAlign:"justify" }}>{currentQuestion.question}</Card.Title>
           <Form.Group style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {currentQuestion.alternatives.map((alt, index) => (
               <div key={index} style={{ marginBottom: '5px', width: '80%'}}>

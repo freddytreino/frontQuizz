@@ -15,7 +15,7 @@ import { Filo } from '../views/filosofia'
 import { Fisica } from '../views/fisica'
 import { Linguagens } from '../views/linguagens'
 import { Pontuacao } from '../views/pontuacao'
-
+import { Geo } from '../views/geografia'
 export const ADM_ROUTE = "/adm"
 export const BIOLOGIA_ROUTE="/biologia"
 export const CADASTRO_ROUTE='/cadastro'
@@ -32,6 +32,7 @@ export const HISTORIA_ROUTE='/historia'
 export const FISICA_ROUTE="/fisica"
 export const LINGUAGENS_ROUTE="/linguagens"
 export const PONTUCAO_ROUTE ="/pontuacao"
+export const GEOGRAFIA_ROUTE ="/geografia"
 export function AppRoutes(){
     return(
         <Routes>
@@ -86,6 +87,9 @@ export function AppRoutes(){
                 </Route>
                 <Route>
                     <Route path={PONTUCAO_ROUTE} element={<Pontuacao></Pontuacao>}/>
+                </Route>
+                <Route>
+                    <Route path={GEOGRAFIA_ROUTE} element={<Geo></Geo>}/>
                 </Route>
         </Routes>
     )
