@@ -6,12 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { showSnackbar } from "../redux/snackbarSlice";
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
 import backgroundImage from '/home/freddy/Área de Trabalho/EngSoft/ProgWeb/frontQuizz/src/views/background.jpg'
-=======
-import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg';
-
->>>>>>> 759e0b615846ec77a243286ae00ecaa70511d802
 export function QuestionForm() {
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,

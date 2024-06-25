@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@reduxjs/toolkit": "^2.2.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -15,19 +14,6 @@
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
     "react-router-dom": "^6.24.0",
-=======
-    "@reduxjs/toolkit": "^2.2.2",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.6.8",
-    "bootstrap": "^5.3.3",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.10.2",
-    "react-dom": "^18.2.0",
-    "react-redux": "^9.1.0",
-    "react-router-dom": "^6.22.3",
->>>>>>> 759e0b615846ec77a243286ae00ecaa70511d802
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
     "web-vitals": "^2.1.4"
@@ -55,13 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "author": "",
   "license": "ISC"
-=======
-  }
->>>>>>> 759e0b615846ec77a243286ae00ecaa70511d802
 }
