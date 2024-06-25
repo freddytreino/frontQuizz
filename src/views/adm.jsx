@@ -5,7 +5,12 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { logout } from '../redux/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import backgroundImage from '/home/freddy/Área de Trabalho/EngSoft/ProgWeb/frontQuizz/src/views/background.jpg'
+=======
+import backgroundImage from '/home/freddy/Área de Trabalho/Engenharia_de_Software/progWeb/trabalhofront/quiz/src/views/background.jpg'
+
+>>>>>>> 759e0b615846ec77a243286ae00ecaa70511d802
 export function Adm() {
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -54,7 +59,11 @@ export function Adm() {
                 <Button variant="primary" as={Link} to="/escolha" style={buttonStyle}>JOGAR</Button>
               </Col>
               <Col style={{textAlign:'center', margin:"5px"}}>
+<<<<<<< HEAD
                 <Button variant="success" as={Link} to="/quest" style={buttonStyle}>CRIAR QUESTÕES</Button>
+=======
+                <Button variant="primary" as={Link} to="/quest" style={buttonStyle}>CRIAR QUESTÕES</Button>
+>>>>>>> 759e0b615846ec77a243286ae00ecaa70511d802
               </Col>
               <Col style={{textAlign:'center', margin:"5px"}}>
                 <Button variant="light" as={Link} to="/informacoes" style={buttonStyle}>INFORMAÇÕES</Button>
