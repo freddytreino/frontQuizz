@@ -118,16 +118,16 @@ export function Informar() {
                     <th>Posição</th>
                     <th>Nome</th>
                     <th>Pontuação</th>
-                    <th>Questões Respondidas</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   {melhoresPerfis.slice(0, 5).map((perfil, index) => (
                     <tr key={perfil._id}>
-                      <td>{index + 1}</td>
+                      <td>{index + 1 }º</td>
                       <td>{perfil.nome}</td>
                       <td>{perfil.pontuacao}</td>
-                      <td>{perfil.respondido}</td>
+                      
                     </tr>
                   ))}
                 </tbody>
